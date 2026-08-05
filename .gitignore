@@ -1,0 +1,10 @@
+# Estado runtime del ambiente Docker (se regenera con docker compose up)
+test-env/data/
+
+# Config local con secretos (usar config_inc.php.example como base)
+test-env/data/config/config_inc.php
+
+# Artefactos de export (copia suelta para instalar en otra instancia), no
+# hace falta versionarlos -la fuente real vive en test-env/plugins/-
+/NotificarJefatura.zip
+/NotificarJefatura/

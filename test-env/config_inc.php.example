@@ -1,0 +1,22 @@
+<?php
+$g_hostname               = 'mysql';
+$g_db_type                = 'mysqli';
+$g_database_name          = 'bugtracker';
+$g_db_username            = 'mantisbt';
+$g_db_password            = 'mantisbt';
+
+$g_default_timezone       = 'America/Santiago';
+
+// Generar uno propio: php -r "echo base64_encode(random_bytes(32)), PHP_EOL;"
+$g_crypto_master_salt     = 'CAMBIAR_ESTE_VALOR_POR_UNO_PROPIO';
+
+// Mailpit (ver docker-compose.yml) para ver los correos de prueba en
+// http://localhost:8025 sin necesidad de un SMTP real.
+$g_phpMailer_method        = PHPMAILER_METHOD_SMTP;
+$g_smtp_host               = 'mailpit';
+$g_smtp_port               = 1025;
+$g_smtp_username           = '';
+$g_smtp_password           = '';
+$g_from_email              = 'mantisbt@test.local';
+$g_webmaster_email         = 'mantisbt@test.local';
+$g_from_name               = 'MantisBT QA';

@@ -1,0 +1,33 @@
+services:
+  mailpit:
+    image: axllent/mailpit:latest
+    restart: unless-stopped
+    ports:
+      - "8025:8025"
+
+  mysql:
+    image: mariadb:10.3
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bugtracker
+      MYSQL_USER: mantisbt
+      MYSQL_PASSWORD: mantisbt
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+
+  mantisbt:
+    image: xlrl/mantisbt:2.26.2
+    restart: unless-stopped
+    depends_on:
+      - mysql
+      - mailpit
+    environment:
+      MANTIS_TIMEZONE: America/Santiago
+      MANTIS_ENABLE_ADMIN: 1
+    ports:
+      - "8989:80"
+    volumes:
+      - ./data/config:/var/www/html/config
+      - ./data/custom:/var/www/html/custom
+      - ./plugins/NotificarJefatura:/var/www/html/plugins/NotificarJefatura
